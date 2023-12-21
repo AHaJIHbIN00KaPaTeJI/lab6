@@ -1,0 +1,17 @@
+CREATE TABLE worker (
+  worker_id INTEGER PRIMARY KEY,
+  shop_id INTEGER REFERENCES product (id),
+  name VARCHAR(255),
+  salary INTEGER NOT NULL,
+  position VARCHAR(255)
+ );
+
+INSERT INTO worker VALUES (1, 1, "Катя", 2000, "Региональный Менеджер");
+INSERT INTO worker VALUES (2, 1, "Глеб", 3000, "Менеджер");
+INSERT INTO worker VALUES (3, 2, "Сир Франсис", 1200, "Уборщик");
+
+/* Считаем колчество студентов в каждой группе, сортируя по количеству студентов */
+SELECT group_id, COUNT(*) AS amount FROM student GROUP BY group_id ORDER BY amount DESC
+
+/* Считаем среднюю зарплату по каждому магазину, сортируя в порядке убывания средней зарплаты */
+SELECT shop_id, AVG(salary) AS avg_salary FROM worker GROUP BY shop_id ORDER BY avg_salary DESC
